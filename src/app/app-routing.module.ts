@@ -8,8 +8,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'menu-escolha',
     pathMatch: 'full'
+  },
+  {
+    path: 'listagem-servicos',
+    loadChildren: () => import('./pages/listagem-servicos/listagem-servicos.module').then( m => m.ListagemServicosPageModule)
+  },
+  {
+    path: 'detalhes-servicos/:id',
+    loadChildren: () => import('./pages/detalhes-servicos/detalhes-servicos.module').then( m => m.DetalhesServicosPageModule)
+  },
+  {
+    path: 'listagem-produtos',
+    loadChildren: () => import('./pages/listagem-produtos/listagem-produtos.module').then( m => m.ListagemProdutosPageModule)
+  },
+  {
+    path: 'menu-escolha',
+    loadChildren: () => import('./pages/menu-escolha/menu-escolha.module').then( m => m.MenuEscolhaPageModule)
+  },
+  {
+    path: 'detalhes-produtos/:id_prod',
+    loadChildren: () => import('./pages/detalhes-produtos/detalhes-produtos.module').then( m => m.DetalhesProdutosPageModule)
   },
 ];
 

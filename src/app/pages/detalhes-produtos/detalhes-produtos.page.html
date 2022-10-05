@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ produto_selecionado.nome }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item *ngIf="!modo_edicao_prod">
+    <ion-item>
+      <ion-label>ID: [ {{ produto_selecionado.id_prod }} ]</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>R$: {{ produto_selecionado.valor }}</ion-label>
+    </ion-item>
+  </ion-item>
+</ion-list>
+    <ion-fab vertical="top" horizontal="end" slot="fixed" edge="true">
+      <ion-fab-button class="bt_ex" color="danger" (click)="deletar()" routerLink="/listagem-produtos">
+        <ion-icon name="trash"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-button *ngIf="!modo_edicao_prod" (click)="iniciar_edicao_prod()">Mudar Dados</ion-button>
+<form *ngIf="modo_edicao_prod">
+  <ion-item>
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="produto_selecionado.nome" name="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Valor</ion-label>
+    <ion-input [(ngModel)]="produto_selecionado.valor" name="valor"></ion-input>
+  </ion-item>
+  <ion-button (click)="encerrar_edicao_prod()" routerLink="/listagem-produtos">Gravar</ion-button>
+</form>
+
+</ion-content>

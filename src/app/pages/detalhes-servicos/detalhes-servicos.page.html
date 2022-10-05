@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Item ID: [ {{ dado_selecionado.id }} ]</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-fab vertical="top" horizontal="end" slot="fixed" edge="true">
+  <ion-fab-button color="danger" (click)="deletar_serv()" routerLink="/listagem-servicos">
+    <ion-icon name="trash"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-list>
+  <ion-item>
+    <ion-label *ngIf="!modo_edicao">{{ dado_selecionado.nome }}</ion-label>
+    <ion-label *ngIf="!modo_edicao">{{ dado_selecionado.valor }}</ion-label>
+  </ion-item>
+</ion-list>
+    <ion-button *ngIf="!modo_edicao" (click)="iniciar_edicao()">Mudar Dados</ion-button>
+<form *ngIf="modo_edicao">
+  <ion-item>
+    <ion-label position="floating">Nome:</ion-label>
+    <ion-input [(ngModel)]="dado_selecionado.nome" name="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Valor:</ion-label>
+    <ion-input [(ngModel)]="dado_selecionado.valor" name="valor"></ion-input>
+  </ion-item>
+  <ion-button (click)="encerrar_edicao()" routerLink="/listagem-servicos">Gravar</ion-button>
+</form>
+</ion-content>

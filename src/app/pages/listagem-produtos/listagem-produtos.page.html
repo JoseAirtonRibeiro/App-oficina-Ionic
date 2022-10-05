@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<body>
+  <ion-fab class="bt_prod" edge="true">
+    <ion-fab-button routerLink="/detalhes-produtos/-1">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+  <ion-list>
+    <ion-item *ngFor="let dados_produtos of dados_produtos" routerLink="/detalhes-produtos/{{ dados_produtos.id_prod }}">
+      <div class="containerProd">
+      </div>
+      <ion-label class="MAMACO_Prod">{{ dados_produtos.nome }}</ion-label> 
+      <ion_label>R$ {{ dados_produtos.valor }}</ion_label>
+    </ion-item>
+  </ion-list>
+</body>
+</ion-content>
